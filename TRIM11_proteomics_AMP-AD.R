@@ -107,14 +107,16 @@ fit <- eBayes(fit)
 ## Get all associations
 results <- topTable(fit, coef="response", number=Inf)
 
-## View top hits
-head(results)
-
 ## Filter significant features
 sig_results <- results[results$adj.P.Val < 0.05, ]
 
 ## Write output
-write.csv(results, paste0(dir,"mamourie/ShenLab/TRIM11/TRIM11_differentialAbundance_AMP-AD.csv"), row.names = FALSE)
-write.csv(sig_results, paste0(dir,"mamourie/ShenLab/TRIM11/TRIM11_differentialAbundance_AMP-AD_significant.csv"), row.names = FALSE)
+write.csv(results, paste0(dir,"mamourie/ShenLab/TRIM11/TRIM11_differentialAbundance_AMP-AD.csv"), row.names = TRUE)
+write.csv(sig_results, paste0(dir,"mamourie/ShenLab/TRIM11/TRIM11_differentialAbundance_AMP-AD_significant.csv"), row.names = TRUE)
+
+###############################################################################
+
+table(clin_order$sex)
+table(clin_order$ADoutcome)
 
 ###############################################################################
